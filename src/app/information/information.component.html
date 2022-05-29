@@ -1,0 +1,74 @@
+<div>
+    <div style="background-color: aliceblue; font-size: initial; font-weight: bold; margin: 7px 0; padding: 5px;text-align: right;">ריכוז מידע בתהליך</div>
+    <div class="test-header content-inline">
+        <table style="margin-top: 16px;  margin-left: 50%;text-align: right;">
+            <tr>
+                <td style="padding: 0px 28px;">{{insuredPerson.Name}}</td>
+                <td  style="padding: 0px 28px;">{{insuredPerson.PhoneNumber}}</td>
+                <td  style="padding: 0px 28px;">{{insuredPerson.Type}}</td>
+                <td  style="padding: 0px 28px;">{{insuredPerson.Address}} </td>
+                <td style="padding: 0px 28px;text-align: right;">:פרטי מבוטח </td>
+            </tr>
+            <tr>
+                <td  style="padding: 0px 28px;">שם</td>
+                <td  style="padding: 0px 28px;">טלפון נייד</td>
+                <td  style="padding: 0px 28px;">סוג</td>
+                <td  style="padding: 0px 28px;">כתובת</td>
+                <td  style="padding: 0px 28px;"></td>
+            </tr>
+        </table>
+    </div>
+  
+</div>
+	<form name="myForm"  [formGroup]="myForm" style="background-color:rgb(218, 224, 226);text-align: right;" >   
+        <table  style="margin-top: 16px;  margin-left: 50%;">   
+        <tr>
+            <td  style="padding: 0px 28px;">  
+                <input type="date" formControlName="eventDate" name="eventDate" [(ngModel)]="dateEvent">
+                <label>:תאריך האירוע</label>
+            </td>
+            <td  style="padding: 0px 28px;"> 
+                <select name="superClaimType"   formControlName="superClaimType"   [(ngModel)]="superClaim">
+                    <option></option>
+                    <option *ngFor="let item of superClaimTypes">{{item.value}}</option>
+                </select>
+                <label>:סוג תביעת על</label>
+            </td>
+        </tr>
+        <tr> 
+            <td   style="padding: 0px 28px;"   >  
+                <select [disabled]="isClaimCauseSelected" required>
+                    <option></option>
+                    <option *ngFor="let item of injuryTypes">{{item.value}}</option> 
+                </select>
+                <label>:מהות האירוע</label>  
+            </td>
+            <td  style="padding: 0px 28px;"> 
+                <select name="claimCause"  formControlName="claimCause" [(ngModel)]="cause" (change)="onChangeClaimCause()">
+                    <option></option>
+                    <option *ngFor="let item of claimCauses" >{{item.value}}</option>
+                </select>
+                <label>:סיבת האירוע</label>
+            </td>
+        </tr>
+        <tr>
+            <td  style="padding: 0px 28px;"> 
+                <select name="identityType" formControlName="identityType" [(ngModel)]="identity">
+                    <option></option>
+                    <option *ngFor="let item of identityTypes" >{{item.value}}</option>
+                </select>
+                <label>:אופן קבלת התביעה</label> 
+            </td>
+            <td  style="padding: 0px 28px;"> 
+                <select name="submitionMethod" formControlName="submitionMethod" [(ngModel)]="submition">
+                    <option></option>
+                    <option *ngFor="let item of submitionMethods" >{{item.value}}</option>
+                </select>    
+                <label>:תביעה הוגשה באמצעות </label>  
+                <div class="field-message" *ngIf="myForm.controls.submitionMethod.touched&&myForm.controls.submitionMethod.errors">
+                    חייב להיות איש קשר מאותו הסוג             
+                </div> 
+            </td> 
+        </tr> 
+    </table> 			
+</form >			

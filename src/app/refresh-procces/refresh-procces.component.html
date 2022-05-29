@@ -1,0 +1,13 @@
+<div class="ims-panel-header full-width content-inline">
+    <div style="margin-left: 60%;">  
+        <button class="button button-dark"   style="text-align:right;background-color: rgb(26, 26, 126);margin-right: 3px;" (click)="resetForm()">
+            רענון תהליך
+         </button>
+         <span style="text-align: right;margin-right: 3px;">    תביעה על:{{superClaim.superClaimNum}}   </span>
+         <span  style="text-align: right;margin-right: 3px;">   מצב תביעה:{{superClaim.superClaimStatus.value}}   </span>
+    </div>
+</div>
+<app-information [persons]="contactPersons" [insuredPerson]="insured" [reset]="refreshForm.asObservable()" (onValid)="validForm($event)"></app-information>
+<app-about-contact-persons [numPersons]="numContactPersons" (onDelivery)="resetNotDelivery()" (onReset)="resetContactArr()"  (onAdd)="addContact(insured)"></app-about-contact-persons>
+<app-contact-persons [persons]="contactPersons" (onAddContact)="addContact($event)" (onUpdateContact)="updatePersons($event)" [insuredPerson]="insured"></app-contact-persons>
+<button style="text-align:right;background-color: rgb(26, 26, 126);margin-right: 3px;" [disabled]="!isValidForm" (click)="printFormToLog()">המשך</button>

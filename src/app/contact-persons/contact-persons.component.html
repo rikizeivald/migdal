@@ -1,0 +1,39 @@
+<div style="margin-top: 15px">
+    <div style="background-color: aliceblue; font-size: initial; font-weight: bold; margin: 7px 0; padding: 5px;text-align: right;">אנשי קשר</div>
+    <div>
+        <div class="table-container has-spacing-top max-height-270 ">
+            <table style="margin-top: 16px;  margin-left: 10%;text-align: right;">
+                <tr>
+                    <td  style="padding: 0px 28px;"></td>
+                    <th  style="padding: 0px 40px;">דוא"ל</th>
+                    <th  style="padding: 0px 40px;">טלפון נייד</th>
+                    <th  style="padding: 0px 40px;">כתובת</th>
+                    <th  style="padding: 0px 40px;">סוג</th>
+                    <th  style="padding: 0px 40px;">שם איש קשר</th>
+                    <th  style="padding: 0px 40px;">מועדף</th>
+                    <th  style="padding: 0px 40px;"></th>
+                </tr>
+                <tr *ngFor="let contact of persons" style="border: radius 1;;">
+                    <td  style="padding: 0px 40px;"></td>
+                    <td style="padding: 0px 40px;">{{contact.Email}}</td>
+                    <td style="padding: 0px 40px;">{{contact.PhoneNumber|correctPhone}}</td>
+                    <td style="padding: 0px 40px;">{{contact.Address}}</td>
+                    <td  style="padding: 0px 40px;">{{contact.Type}}</td>
+                    <td  style="padding: 0px 40px;">{{contact.Name}}</td>
+                    <td  style="padding: 0px 40px;"> <input  *ngIf="contact.DeliveryFlag==true" type="checkbox" (click)="updateDeliveryFlagFalse(contact.Name)" checked/>
+                        <input *ngIf="contact.DeliveryFlag==false" type="checkbox" (click)="updateDeliveryFlag(contact.Name)"/></td>
+                    <td  style="padding: 0px 28px;"></td>  
+                </tr>
+            </table>
+        </div>
+        <app-add-contact *ngIf="addPerson" (onAdd)="addContact($event)" [contactPersons]="persons"></app-add-contact>
+        <input type="button" style="text-align: right;background-color: rgb(26, 26, 126);margin-left: 90%;" (click)="startToAddPerson()" value="הוסף איש קשר">
+    </div> 
+</div> 
+    
+
+
+
+
+
+

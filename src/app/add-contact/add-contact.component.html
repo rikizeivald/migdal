@@ -1,0 +1,19 @@
+<form name="myForm"  [formGroup]="myForm" style="background-color:rgb(218, 224, 226);text-align: right;" >   
+<table style="margin-top: 16px;  margin-left: 20%;text-align: right;">
+    <tr>
+        <td  style="padding: 0px 5px;"><input type="button" name="add"  value="+"(click)="addContact()" [disabled]="!myForm.valid" ></td>
+        <th  style="padding: 0px 5px;"><input type="text" name="address"   formControlName="email"   [(ngModel)]="contact.Email"></th>
+        <th  style="padding: 0px 5px;"><input type="number" name="phoneNumber"  formControlName="phoneNumber"   [(ngModel)]="contact.PhoneNumber" required></th>
+        <th  style="padding: 0px 5px;"><input type="text" name="address" size="10"  formControlName="address"   [(ngModel)]="contact.Address"></th>
+        <th  style="padding: 0px 5px;"> 
+        <select name="type" formControlName="type" [(ngModel)]="contact.Type">
+            <option></option>
+            <option *ngFor="let item of contactPersonType" >{{item.value}}</option>
+        </select>
+    </th>
+        <th  style="padding: 0px 5px;"><input type="text" name="name"  size="10"  formControlName="name"   [(ngModel)]="contact.Name"></th>
+        <th  style="padding: 0px 5px;"><input type="checkbox" formControlName="deliveryFlag" name="deliveryFlag" [(ngModel)]="contact.DeliveryFlag"></th>
+        <th  style="padding: 0px 5px;"></th>
+    </tr>
+ </table>
+</form >
